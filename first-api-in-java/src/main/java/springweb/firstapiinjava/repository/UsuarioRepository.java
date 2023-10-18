@@ -15,4 +15,6 @@ import java.util.stream.Collectors;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
     Usuario findByUsername(String username);
+
+    List<Usuario> findAllByPassword(String password);
 }

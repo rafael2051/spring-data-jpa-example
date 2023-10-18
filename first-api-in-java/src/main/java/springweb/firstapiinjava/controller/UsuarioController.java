@@ -36,4 +36,7 @@ public class UsuarioController {
     public void putUser(@RequestBody Usuario usuario){
         repository.save(usuario);
     }
+
+    @GetMapping("/password/password}")
+    public List<Usuario> getByPassword(@PathVariable("password") String password) { return repository.findAllByPassword(password);}
 }

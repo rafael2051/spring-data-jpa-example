@@ -1,2 +1,3 @@
-# studies-of-spring-web
-Some directories containing Spring projects for studying usage.
+# spring-projects
+
+Some directories containing Spring projects for studying purpose.
