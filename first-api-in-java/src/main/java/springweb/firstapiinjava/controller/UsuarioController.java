@@ -1,6 +1,7 @@
 package springweb.firstapiinjava.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import springweb.firstapiinjava.model.Usuario;
 import springweb.firstapiinjava.repository.UsuarioRepository;
@@ -8,7 +9,7 @@ import springweb.firstapiinjava.repository.UsuarioRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/db")
 public class UsuarioController {
     @Autowired
     private UsuarioRepository repository;
@@ -37,6 +38,4 @@ public class UsuarioController {
         repository.save(usuario);
     }
 
-    @GetMapping("/password/password}")
-    public List<Usuario> getByPassword(@PathVariable("password") String password) { return repository.findAllByPassword(password);}
 }

@@ -3,6 +3,9 @@ package springweb.firstapiinjava.model;
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Usuario {
     @Id
@@ -15,6 +18,11 @@ public class Usuario {
     private String username;
     @Column(length = 100, nullable = false)
     private String password;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "tab_user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role_id")
+    private List<String> roles = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -40,6 +48,14 @@ public class Usuario {
     }
 
     public Integer getId(){ return id;}
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
 
     @Override
     public String toString() {

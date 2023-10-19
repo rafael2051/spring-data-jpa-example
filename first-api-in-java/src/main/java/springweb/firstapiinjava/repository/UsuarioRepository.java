@@ -1,5 +1,7 @@
 package springweb.firstapiinjava.repository;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import springweb.firstapiinjava.handler.BusinessException;
 import springweb.firstapiinjava.handler.CampoObrigatorioException;
@@ -14,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
-    Usuario findByUsername(String username);
 
-    List<Usuario> findAllByPassword(String password);
+    @Query("SELECT e FROM Usuario e JOIN FETCH e.roles WHERE e.username= (:username)")
+    public Usuario findByUsername(@Param("username") String username);
 }
