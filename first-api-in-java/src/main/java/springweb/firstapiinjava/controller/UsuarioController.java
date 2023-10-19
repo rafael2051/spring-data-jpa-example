@@ -5,6 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import springweb.firstapiinjava.model.Usuario;
 import springweb.firstapiinjava.repository.UsuarioRepository;
+import springweb.firstapiinjava.service.UsuarioService;
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ import java.util.List;
 public class UsuarioController {
     @Autowired
     private UsuarioRepository repository;
+    @Autowired
+    private UsuarioService usuarioService;
 
     @GetMapping("")
     public List<Usuario> getUsers(){
@@ -30,7 +33,7 @@ public class UsuarioController {
 
     @PostMapping("")
     public void postUser(@RequestBody Usuario usuario){
-        repository.save(usuario);
+        usuarioService.createUser(usuario);
     }
 
     @PutMapping("")
